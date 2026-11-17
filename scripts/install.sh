@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
-# Edit Mind installer — sets up the Docker stack, .env, and (optionally) Ollama.
-# https://github.com/IliasHad/edit-mind
+# Orcah Studio installer — sets up the Docker stack, .env, and (optionally) Ollama.
+# https://github.com/IliasHad/orcah-studio
 set -euo pipefail
 
-REPO="https://raw.githubusercontent.com/IliasHad/edit-mind/main"
-DEFAULT_INSTALL_DIR="$HOME/edit-mind"
+REPO="https://raw.githubusercontent.com/IliasHad/orcah-studio/main"
+# Docker Compose names volumes after the install folder, so an existing
+# ~/edit-mind install keeps its folder (and its index) on re-runs.
+if [[ -d "$HOME/edit-mind" ]]; then
+  DEFAULT_INSTALL_DIR="$HOME/edit-mind"
+else
+  DEFAULT_INSTALL_DIR="$HOME/orcah-studio"
+fi
 OLLAMA_MODEL="qwen2.5:7b-instruct"
 
 trap 'printf "\nSetup stopped at line %s. Review the message above and run the installer again when ready.\n" "$LINENO" >&2' ERR
@@ -109,7 +115,7 @@ fi
 
 # --- intro -----------------------------------------------------------------
 log
-log "${bold}Edit Mind setup${reset} ${dim}— local AI video knowledge base${reset}"
+log "${bold}Orcah Studio setup${reset} ${dim}— local AI video knowledge base${reset}"
 log
 
 # --- install location ------------------------------------------------------
@@ -123,7 +129,7 @@ while :; do
   fi
 
   warn "Cannot create or write to '$INSTALL_DIR'."
-  warn "Choose a folder inside your home directory, for example: $HOME/edit-mind"
+  warn "Choose a folder inside your home directory, for example: $HOME/orcah-studio"
 done
 cd "$INSTALL_DIR"
 
@@ -282,7 +288,7 @@ log "  cd \"$INSTALL_DIR\""
 log "  ${COMPOSE[*]} up -d"
 log "  open http://localhost:3745"
 log
-log "If this is useful: ${bold}https://github.com/IliasHad/edit-mind${reset}"
+log "If this is useful: ${bold}https://github.com/IliasHad/orcah-studio${reset}"
 log
 
 confirm "Start Orcah Studio now?" || exit 0
