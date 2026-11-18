@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #
-# Orcah Studio / Edit Mind self-hosted installer.
+# Orcah Studio self-hosted installer (the open-source Docker version).
 #
 # Run this from a cloned checkout:
 #   ./install.sh
 #
 # Or run it directly from GitHub:
-#   bash <(curl -fsSL https://raw.githubusercontent.com/IliasHad/edit-mind/main/install.sh)
+#   bash <(curl -fsSL https://raw.githubusercontent.com/IliasHad/orcah-studio/main/install.sh)
 #
 # The implementation lives in scripts/install.sh so that existing setup links
 # keep working too.  Keeping this small top-level entry point makes the
@@ -28,4 +28,4 @@ command -v curl >/dev/null 2>&1 || {
   printf '%s\n' 'error: curl is required to download the installer.' >&2
   exit 1
 }
-exec bash <(curl -fsSL "https://raw.githubusercontent.com/IliasHad/edit-mind/main/scripts/install.sh") "$@"
+exec bash <(curl -fsSL "https://raw.githubusercontent.com/IliasHad/orcah-studio/main/scripts/install.sh") "$@"
