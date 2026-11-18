@@ -59,11 +59,6 @@
 
 The self-hosted Orcah Studio edition uses Docker Compose to run everything in containers.
 
-## Setup Video
-
-[![Orcah Studio self-hosted setup guide](https://img.youtube.com/vi/WVNuP8ic3uY/maxresdefault.jpg)](https://www.youtube.com/watch?v=WVNuP8ic3uY)<br>
-*Click to watch a walkthrough of the self-hosted setup guide.*
-
 ### Prerequisites
 
 *   [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
